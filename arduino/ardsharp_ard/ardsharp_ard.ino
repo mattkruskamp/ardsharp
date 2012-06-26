@@ -76,6 +76,11 @@ void process()
     case 102:
       digitalWrite(inputByte_2, inputByte_3);
       break;
+      
+    // digital read
+    case 103:
+      Serial.print(digitalRead(inputByte_2));
+      break;
   }
   
   // clear Message bytes so we

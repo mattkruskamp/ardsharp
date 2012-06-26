@@ -79,5 +79,20 @@ namespace ArdSharp
             SerialConnector.Send(
                 new Command(CommandMap.DigitalWrite, pin, (int)mode));
         }
+
+        /// <summary>
+        /// Reads the value from a specified digital pin, either HIGH or LOW.
+        /// </summary>
+        /// <param name="pin">The pin to read from.</param>
+        /// <returns>The digitalmode from the pin.</returns>
+        public DigitalMode DigitalRead(int pin)
+        {
+            Debug.WriteLine(string.Format("Sending digital read to pin {0}", pin));
+            string message = SerialConnector.SendRead(new Command(CommandMap.DigitalRead, pin, 0));
+            int tryMessage;
+            if (!int.TryParse(message, out tryMessage))
+                throw new InvalidOperationException("The arduino passed back invalid data about the port.");
+            return (DigitalMode)tryMessage;
+        }
     }
 }

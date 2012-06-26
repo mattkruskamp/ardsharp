@@ -15,5 +15,7 @@ namespace ArdSharp
         public static int PinMode = 101;
 
         public static int DigitalWrite = 102;
+
+        public static int DigitalRead = 103;
     }
 }

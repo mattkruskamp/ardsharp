@@ -18,4 +18,11 @@
     values:
       LOW: 0
       HIGH: 255
+  
+  Digital Read
+    command byte: 103
+    pin byte: pin #
+    values:
+      LOW: 0
+      HIGH: 255
 */
