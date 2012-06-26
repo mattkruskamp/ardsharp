@@ -9,6 +9,7 @@ byte inputByte_3;  // value byte - the value to set
 byte inputByte_4;  // extra byte - for expansion
 
 int portNumber = 9600;  // default port - 9600
+int inputParse = 0;
 
 /*
   The setup item. Initializes the serial port
@@ -54,15 +55,26 @@ void process()
   // first indexer
   switch(inputByte_1)
   {
-    // Initialize
+    // initialize
     case 100:
       Serial.print("hi");
       break;
-    // PinMode
+      
+    // pin mode
     case 101:
-      int type = OUTPUT;
+      // parse the input byte
+      inputParse = OUTPUT;
+      if(inputByte_3 == 0)
+        inputParse = INPUT;
+      if(inputByte_3 == 2)
+        inputParse = INPUT_PULLUP;
       // check for other types here
-      pinMode(inputByte_2, type);
+      pinMode(inputByte_2, inputParse);
+      break;
+    
+    // digital write
+    case 102:
+      digitalWrite(inputByte_2, inputByte_3);
       break;
   }
   
