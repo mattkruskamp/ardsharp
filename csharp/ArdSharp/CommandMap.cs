@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ArdSharp
 {
+    /// <summary>
+    /// A mapper for the serialization of the commands.
+    /// </summary>
     public static class CommandMap
     {
         public static int Initialize = 100;

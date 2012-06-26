@@ -32,6 +32,6 @@ namespace ArdSharp.Common
         /// </summary>
         /// <param name="pin">The pin to write.</param>
         /// <param name="mode">The write mode value.</param>
-        void DigitalWrite(int pin, DigitalWriteMode mode);
+        void DigitalWrite(int pin, DigitalMode mode);
     }
 }

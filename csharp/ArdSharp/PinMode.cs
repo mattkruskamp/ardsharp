@@ -5,6 +5,10 @@ using System.Text;
 
 namespace ArdSharp
 {
+    /// <summary>
+    /// The arduino documentation pinmode INPUT, 
+    /// OUTPUT, and INPUTPULLUP constants.
+    /// </summary>
     public enum PinMode
     {
         Input = 0,
