@@ -3,8 +3,8 @@
 // that we can use to pass information
 // to and from c#
 byte inputByte_0;  // verification byte - should be 42
-byte inputByte_1;  // pin byte - the number of the pin
-byte inputByte_2;  // command byte - the action to perform
+byte inputByte_1;  // command byte - the action to perform
+byte inputByte_2;  // pin byte - the number of the pin
 byte inputByte_3;  // value byte - the value to set
 byte inputByte_4;  // extra byte - for expansion
 
@@ -45,7 +45,8 @@ void loop()
 */
 void process() 
 {
-  // verify that we are valid
+  // check the verification byte to make sure
+  // we are buddies
   if(inputByte_0 != 42)
     return;
   
@@ -53,13 +54,15 @@ void process()
   // first indexer
   switch(inputByte_1)
   {
-    case 127:
-      digitalWrite(inputByte_2, inputByte_3);
+    // Initialize
+    case 100:
+      Serial.print("hi");
       break;
-    case 128:
-      // say hello
-      Serial.print("HELLO FROM ARDUINO");
-      setDefaults();
+    // PinMode
+    case 101:
+      int type = OUTPUT;
+      // check for other types here
+      pinMode(inputByte_2, type);
       break;
   }
   
@@ -70,14 +73,4 @@ void process()
   inputByte_2 = 0;
   inputByte_3 = 0;
   inputByte_4 = 0;
-}
-
-void setDefaults()
-{
-  // set defaults so that everything lines up
-  // iterate the set pins
-  for(int x = 0; x < digitalPinCount; x = x + 1)
-  {
-    digitalWrite(digitalPins[x], LOW);
-  }
 }
