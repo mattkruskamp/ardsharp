@@ -3,7 +3,7 @@
  * Copyright (c) 2012
  * This software is released under the MIT license.
  */
- 
+
 // configure some input bytes
 // that we can use to pass information
 // to and from c#
@@ -18,8 +18,8 @@ int inputParse = 0;
 
 /*
   The setup item. Initializes the serial port
-  for communication with c#
-*/
+ for communication with c#
+ */
 void setup() 
 {
   // initialize and wait for command
@@ -28,8 +28,8 @@ void setup()
 
 /*
   Game style loop. Iterates and attempts to read
-  the five bytes.
-*/
+ the five bytes.
+ */
 void loop() 
 {
   if (Serial.available() == 5) 
@@ -40,22 +40,22 @@ void loop()
     inputByte_2 = Serial.read();
     inputByte_3 = Serial.read();
     inputByte_4 = Serial.read();
-    
+
     process();
   }
 }
 
 /*
   Process the bytes if they are recieved
-  from the client.
-*/
+ from the client.
+ */
 void process() 
 {
   // check the verification byte to make sure
   // we are buddies
   if(inputByte_0 != 42)
     return;
-  
+
   // switch on the command from the
   // first indexer
   switch(inputByte_1)
@@ -63,8 +63,8 @@ void process()
     // initialize
     case 100:
       Serial.print("hi");
-      break;
-      
+    break;
+
     // pin mode
     case 101:
       // parse the input byte
@@ -75,19 +75,28 @@ void process()
         inputParse = INPUT_PULLUP;
       // check for other types here
       pinMode(inputByte_2, inputParse);
-      break;
-    
+    break;
+
     // digital write
     case 102:
       digitalWrite(inputByte_2, inputByte_3);
-      break;
-      
+    break;
+
     // digital read
     case 103:
       Serial.print(digitalRead(inputByte_2));
-      break;
+    break;
+    
+    // analog write
+    case 105:
+      analogWrite(inputByte_2, inputByte_3);
+    break;
+    
+    // analog read
+    case 106:
+    break;
   }
-  
+
   // clear Message bytes so we
   // can recieve more messages.
   inputByte_0 = 0;
@@ -96,3 +105,4 @@ void process()
   inputByte_3 = 0;
   inputByte_4 = 0;
 }
+

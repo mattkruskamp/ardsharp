@@ -22,5 +22,9 @@ namespace ArdSharp
         public static int DigitalWrite = 102;
 
         public static int DigitalRead = 103;
+
+        public static int AnalogWrite = 105;
+
+        public static int AnalogRead = 106;
     }
 }

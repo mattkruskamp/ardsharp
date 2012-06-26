@@ -81,8 +81,7 @@ namespace ArdSharp
         public void DigitalWrite(int pin, DigitalMode mode)
         {
             Debug.WriteLine(string.Format("Sending digital write {0} to pin {1}", mode.ToString(), pin));
-            SerialConnector.Send(
-                new Command(CommandMap.DigitalWrite, pin, (int)mode));
+            SerialConnector.Send(new Command(CommandMap.DigitalWrite, pin, (int)mode));
         }
 
         /// <summary>
@@ -98,6 +97,35 @@ namespace ArdSharp
             if (!int.TryParse(message, out tryMessage))
                 throw new InvalidOperationException("The arduino passed back invalid data about the port.");
             return (DigitalMode)tryMessage;
+        }
+
+        /// <summary>
+        /// Writes an analog value (PWM wave) to a pin. Can be used to light a LED at
+        /// varying brightnesses or drive a motor at various speeds.
+        /// </summary>
+        /// <param name="pin">The pin to write.</param>
+        /// <param name="value">The value from 0 to 255 to set to.</param>
+        public void AnalogWrite(int pin, int value)
+        {
+            if (value < 0 || value > 255)
+                throw new InvalidOperationException("You can only set analog pins between 0 and 255");
+            Debug.WriteLine(string.Format("Sending analog write {0} to pin {1}", value, pin));
+            SerialConnector.Send(new Command(CommandMap.AnalogWrite, pin, value));
+        }
+
+        /// <summary>
+        /// Reads the value from a specified analog pin.
+        /// </summary>
+        /// <param name="pin">The pin to read from.</param>
+        /// <returns>A value of the pin from 0 to 1023.</returns>
+        public int AnalogRead(int pin)
+        {
+            Debug.WriteLine(string.Format("Sending analog read to pin {0}", pin));
+            string message = SerialConnector.SendRead(new Command(CommandMap.AnalogRead, pin, 0));
+            int tryMessage;
+            if (!int.TryParse(message, out tryMessage))
+                throw new InvalidOperationException("The arduino passed back invalid data about the port.");
+            return tryMessage;
         }
     }
 }

@@ -28,7 +28,19 @@
   Digital Read
     command byte: 103
     pin byte: pin #
+    returns:
+      0: LOW
+      255: HIGH
+      
+  Analog Write
+    command byte: 105
+    pin byte: pin #
     values:
-      LOW: 0
-      HIGH: 255
+      int from 0 to 255
+      
+  Analog Read
+    command byte: 106
+    pin byte: pin #
+    returns:
+      int from 0 to 255
 */

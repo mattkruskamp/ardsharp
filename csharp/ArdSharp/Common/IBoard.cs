@@ -38,5 +38,27 @@ namespace ArdSharp.Common
         /// <param name="pin">The pin to write.</param>
         /// <param name="mode">The write mode value.</param>
         void DigitalWrite(int pin, DigitalMode mode);
+
+        /// <summary>
+        /// Reads the value from a specified digital pin, either HIGH or LOW.
+        /// </summary>
+        /// <param name="pin">The pin to read from.</param>
+        /// <returns>The digitalmode from the pin.</returns>
+        DigitalMode DigitalRead(int pin);
+
+        /// <summary>
+        /// Writes an analog value (PWM wave) to a pin. Can be used to light a LED at 
+        /// varying brightnesses or drive a motor at various speeds.
+        /// </summary>
+        /// <param name="pin">The pin to write.</param>
+        /// <param name="value">The value from 0 to 255 to set to.</param>
+        void AnalogWrite(int pin, int value);
+
+        /// <summary>
+        /// Reads the value from a specified analog pin.
+        /// </summary>
+        /// <param name="pin">The pin to read from.</param>
+        /// <returns>A value of the pin from 0 to 1023.</returns>
+        int AnalogRead(int pin);
     }
 }
