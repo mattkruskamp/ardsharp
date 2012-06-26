@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArdSharp", "ArdSharp\ArdSharp.csproj", "{54908562-3830-456D-B7A9-8501884F9A26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54908562-3830-456D-B7A9-8501884F9A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54908562-3830-456D-B7A9-8501884F9A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54908562-3830-456D-B7A9-8501884F9A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54908562-3830-456D-B7A9-8501884F9A26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
