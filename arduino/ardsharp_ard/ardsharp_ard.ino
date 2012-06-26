@@ -1,4 +1,9 @@
-
+/**
+ * Author: Matt Kruskamp (http://www.cyberkruz.com)
+ * Copyright (c) 2012
+ * This software is released under the MIT license.
+ */
+ 
 // configure some input bytes
 // that we can use to pass information
 // to and from c#

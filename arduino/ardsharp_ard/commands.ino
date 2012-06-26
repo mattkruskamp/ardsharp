@@ -1,3 +1,9 @@
+/**
+ * Author: Matt Kruskamp (http://www.cyberkruz.com)
+ * Copyright (c) 2012
+ * This software is released under the MIT license.
+ */
+ 
 /*
   Initialize
     command byte: 100

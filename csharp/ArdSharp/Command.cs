@@ -1,4 +1,9 @@
-﻿using System;
+﻿/**
+ * Author: Matt Kruskamp (http://www.cyberkruz.com)
+ * Copyright (c) 2012
+ * This software is released under the MIT license.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
